@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Lite</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page-shell">
+    <header>
+        <p class="eyebrow">TEAM WORKSPACE</p>
+        <div class="header-row">
+            <div><h1>TaskFlow Lite</h1><p>Manage the work that matters.</p></div>
+            <label class="filter-label">Filter status
+                <select id="status-filter"><option value="">All tasks</option><option value="TODO">To do</option><option value="IN_PROGRESS">In progress</option><option value="DONE">Done</option></select>
+            </label>
+        </div>
+    </header>
+
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+    <section class="workspace">
+        <aside class="form-panel"><h2 id="form-title">Create a task</h2>
+            <form id="task-form">
+                <label>Title <input id="title" name="title" required minlength="3" maxlength="100" placeholder="e.g. Prepare release notes"></label>
+                <label>Description <textarea id="description" name="description" maxlength="500" placeholder="Add helpful context (optional)"></textarea></label>
+                <div class="form-grid">
+                    <label>Priority <select id="priority" name="priority"><option value="LOW">Low</option><option value="MEDIUM" selected>Medium</option><option value="HIGH">High</option></select></label>
+                    <label>Status <select id="status" name="status"><option value="TODO">To do</option><option value="IN_PROGRESS">In progress</option><option value="DONE">Done</option></select></label>
+                </div>
+                <label>Due date <input id="dueDate" name="dueDate" type="date"></label>
+                <div class="actions"><button type="submit">Save task</button><button id="cancel-button" class="secondary" type="button" hidden>Cancel</button></div>
+            </form>
+        </aside>
+        <section class="list-panel"><div class="list-heading"><h2>Your tasks</h2><span id="task-count"></span></div><div id="task-list" class="task-list"></div></section>
+    </section>
+</main>
+<template id="task-template"><article class="task-card"><div class="task-top"><span class="priority"></span><div class="card-actions"><button class="edit-button" type="button">Edit</button><button class="delete-button" type="button">Delete</button></div></div><h3></h3><p class="description"></p><div class="task-meta"><span class="status"></span><span class="due-date"></span></div></article></template>
+<script src="app.js"></script>
+</body>
+</html>
